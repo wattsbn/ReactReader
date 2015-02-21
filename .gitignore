@@ -1,7 +1,3 @@
 node_modules
-bower_components
-dist
-public
-*.generated.*
-.idea/
-.git/
+npm-debug.log
+.DS_Store
