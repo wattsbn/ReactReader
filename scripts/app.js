@@ -1,11 +1,16 @@
+/** @jsx React.DOM **/
 'use strict';
-
 var React = require('react');
+
+var ComicList = require('./comicList');
 
 var App = React.createClass({
   render() {
     return (
-      <h1>Hello, world.</h1>
+        <div>
+            <h1>Hello boom world.</h1>
+            <ComicList />
+        </div>
     );
   }
 });
