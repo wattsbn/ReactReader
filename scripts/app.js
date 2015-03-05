@@ -1,7 +1,6 @@
 /** @jsx React.DOM **/
 'use strict';
 var React = require('react');
-
 var ComicList = require('./comicList');
 
 var App = React.createClass({
