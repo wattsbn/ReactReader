@@ -4,9 +4,10 @@ var fs = require('fs');
 var FS = require("q-io/fs");
 var HTTP = require("q-io/http");
 var util = require('util');
-var parseString = require('xml2js').parseString;
+var xml2js = require('xml2js');
 var express = require('express');
 
+var parser = new xml2js.Parser({explicitArray: false});
 var apiKey = '1679636f33c76a038a1bce8fad09a5babfad8f5f';
 
 function print(something) {
@@ -57,7 +58,7 @@ function getComics(query) {
     HTTP.request(options).done(function(response) {
         console.log(response.status);
         response.body.read().done(function(buffer) {
-            parseString(buffer.toString(), function (err, result) {
+            parser.parseString(buffer.toString(), function (err, result) {
                 fullResponse = result;
             });
         });
@@ -73,7 +74,7 @@ function searchComics(query) {
     var defferred = q.defer();
     HTTP.request(options).then(function(response) {
         response.body.read().then(function(buffer) {
-            parseString(buffer.toString(), function (err, result) {
+            parser.parseString(buffer.toString(), function (err, result) {
                 defferred.resolve(result);
             });
         });
@@ -88,6 +89,16 @@ function getFiles3() {
 }
 
 var app = express();
+
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+});
+
+
 app.get('/', function (req, res) {
     res.append('Content-Type', 'application/json');
     res.send(JSON.stringify(fullResponse));
@@ -130,3 +141,4 @@ connection.query('SELECT * from series', function(err, rows, fields) {
 });
 
 connection.end();
+

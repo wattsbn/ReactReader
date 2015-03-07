@@ -1,7 +1,7 @@
 {
   "name": "react-reader",
   "version": "0.0.1",
-  "description": "An online comic book reader built with ReactJS",
+  "description": "Something Awesome",
   "homepage": "https://github.com/wattsbn/ReactReader",
   "bugs": {
     "url": "https://github.com/wattsbn/ReactReader/issues"
@@ -11,20 +11,15 @@
     "url": "https://github.com/wattsbn/ReactReader.git"
   },
   "scripts": {
-    "forever": "forever -o logs/output.log -e error.log start example.js",
-    "start": "node example.js",
+    "start": "forever -o logs/output.log -e error.log start example.js",
     "stop": "forever stopall"
   },
   "dependencies": {
     "express": "^4.11.2",
+    "mysql": "^2.5.5",
+    "q": "^1.2.0",
     "q-io": "^1.11.6",
-    "react": "^0.12.0",
     "xml2js": "^0.4.5"
   },
-  "devDependencies": {
-    "jsx-loader": "^0.12.2",
-    "react-hot-loader": "^1.1.1",
-    "webpack": "^1.5.1",
-    "webpack-dev-server": "1.6.4"
-  }
+  "devDependencies": {}
 }
