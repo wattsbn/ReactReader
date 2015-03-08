@@ -26,7 +26,7 @@ function getFiles() {
 }
 
 function makeRequest(options) {
-    callback = function(response) {
+    var callback = function(response) {
         console.log('STATUS: ' + response.statusCode);
         var str = '';
 
@@ -39,7 +39,7 @@ function makeRequest(options) {
         response.on('end', function () {
             console.log(str);
         });
-    }
+    };
 
     var request = http.request(options, callback);
     request.on('error', function(e) {
@@ -68,7 +68,7 @@ function getComics(query) {
 function searchComics(query) {
     var options = {
         host: 'www.comicvine.com',
-        path: '/api/search/?api_key=' + apiKey + '&resources=volume&field_list=id,name,image,site_detail_url,start_year'
+        path: '/api/search/?api_key=' + apiKey + '&resources=volume&field_list=id,name,image,site_detail_url,start_year,description'
     };
     options.path += '&query=' + query;
     var defferred = q.defer();
@@ -98,7 +98,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-
 app.get('/', function (req, res) {
     res.append('Content-Type', 'application/json');
     res.send(JSON.stringify(fullResponse));
@@ -122,23 +121,22 @@ var server = app.listen(1337, function () {
     console.log('Example app listening at http://%s:%s\n', host, port)
 });
 
-getComics('flash');
+function testSQL() {
+    var mysql = require('mysql');
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'admin',
+        password : 'secret',
+        database : 'comics'
+    });
 
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'admin',
-    password : 'secret',
-    database : 'comics'
-});
+    connection.connect();
+    connection.query('SELECT * from series', function(err, rows, fields) {
+        if (!err)
+            console.log('The solution is: ', rows);
+        else
+            console.log('Error while performing Query.');
+    });
 
-connection.connect();
-connection.query('SELECT * from series', function(err, rows, fields) {
-    if (!err)
-        console.log('The solution is: ', rows);
-    else
-        console.log('Error while performing Query.');
-});
-
-connection.end();
-
+    connection.end();
+}

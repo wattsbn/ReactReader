@@ -10,10 +10,12 @@
     "type": "git",
     "url": "https://github.com/wattsbn/ReactReader.git"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
-    "react": "^0.12.0"
+    "css-loader": "^0.9.1",
+    "less-loader": "^2.1.0",
+    "react": "^0.12.0",
+    "style-loader": "^0.8.3"
   },
   "devDependencies": {
     "jsx-loader": "^0.12.2",
