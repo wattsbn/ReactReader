@@ -17,12 +17,10 @@ function makeRequest(options) {
         console.log('STATUS: ' + response.statusCode);
         var str = '';
 
-        //another chunk of data has been recieved, so append it to `str`
         response.on('data', function (chunk) {
             str += chunk;
         });
 
-        //the whole response has been recieved, so we just print it out here
         response.on('end', function () {
             console.log(str);
         });
@@ -35,9 +33,7 @@ function makeRequest(options) {
     request.end();
 }
 
-
-
-function getFiles3() {
+function getLocalFiles() {
     FS.list('/volume1/Comics').then(function() {
         console.log(arguments);
     }).done();

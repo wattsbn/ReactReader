@@ -1,9 +1,5 @@
-var util = require('util');
 var express = require('express');
-
-function print(something) {
-    console.log(util.inspect(something, { showHidden: true, depth: null }));
-}
+var comicVine = require('./comicVine');
 
 var app = express();
 app.use(function(req, res, next) {
@@ -14,21 +10,25 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/', function (req, res) {
-    res.append('Content-Type', 'application/json');
-    res.send(JSON.stringify(fullResponse));
-});
-
 app.param('term', function (req, res, next, term) {
     req.term = term;
     next();
 });
 
 app.get('/search/:term', function (req, res) {
-    searchComics(req.term).then(function(result) {
+    res.append('Content-Type', 'application/json');
+    comicVine.search(req.term).then(function(result) {
         res.send(result);
     });
+});
+
+app.get('/files/unmatched', function(req, res) {
     res.append('Content-Type', 'application/json');
+    var testData = [
+        {name: 'flash', location: '/comics/new 52/flash'},
+        {name: 'grifter', location: '/comics/new 52/grifter'}
+    ];
+    res.send(testData);
 });
 
 function startServer() {
