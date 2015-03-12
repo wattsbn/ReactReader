@@ -11,15 +11,15 @@ function searchVolumes(query) {
         path: '/api/search/?api_key=' + apiKey + '&resources=volume&field_list=id,name,image,site_detail_url,start_year,description'
     };
     options.path += '&query=' + query;
-    var defferred = q.defer();
+    var deferred = q.defer();
     HTTP.request(options).then(function(response) {
         response.body.read().then(function(buffer) {
             parser.parseString(buffer.toString(), function (err, result) {
-                defferred.resolve(result);
+                deferred.resolve(result);
             });
         });
     });
-    return defferred.promise;
+    return deferred.promise;
 }
 
 module.exports = {
