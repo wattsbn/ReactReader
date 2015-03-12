@@ -22,7 +22,7 @@ var SearchView = React.createClass({
     },
     render: function() {
         return (
-            <div className="searchView">
+            <div className="container searchView">
                 <SearchBox search={this.handleSearch} />
                 <SearchResults results={this.state.results} />
             </div>

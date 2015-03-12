@@ -3,6 +3,7 @@ var React = require('react');
 var ThemeItem = require('./theme/themeItem');
 var config = require('./config');
 var themes = require('./theme/themes');
+var {Link} = require('react-router');
 
 var NavBar = React.createClass({
     getThemes: function(){
@@ -17,7 +18,7 @@ var NavBar = React.createClass({
             <div className="navbar navbar-default navbar-fixed-top">
                 <div className="container">
                     <div className="navbar-header">
-                        <a href="" className="navbar-brand">{config.appName}</a>
+                        <Link className="navbar-brand" to="home">{config.appName}</Link>
                         <button className="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false">
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
@@ -32,12 +33,8 @@ var NavBar = React.createClass({
                                 {this.getThemes()}
                                 </ul>
                             </li>
-                            <li>
-                                <a href="../search/">Search</a>
-                            </li>
-                            <li>
-                                <a href="../match/">Match</a>
-                            </li>
+                            <li><Link to="search">Search</Link></li>
+                            <li><Link to="match">Match</Link></li>
                         </ul>
                     </div>
                 </div>
