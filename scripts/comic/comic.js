@@ -4,11 +4,7 @@ var React = require('react');
 require('./comic.less');
 
 var Comic = React.createClass({
-    shouldComponentUpdate: function(nextProps) {
-        return this.props.data.id !== nextProps.data.id;
-    },
     getDescription: function() {
-        console.log('Updating description');
         var d = this.props.data.description;
         var index = d.indexOf('</p>');
         if (index) {

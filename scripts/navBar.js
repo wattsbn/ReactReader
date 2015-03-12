@@ -9,7 +9,7 @@ var NavBar = React.createClass({
     getThemes: function(){
         return themes.map(function (theme) {
             return (
-                <ThemeItem theme={theme}/>
+                <ThemeItem key={theme.name} theme={theme}/>
             );
         }.bind(this));
     },

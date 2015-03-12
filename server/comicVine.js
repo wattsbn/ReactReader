@@ -8,13 +8,16 @@ var parser = new xml2js.Parser({explicitArray: false});
 function searchVolumes(query) {
     var options = {
         host: 'www.comicvine.com',
-        path: '/api/search/?api_key=' + apiKey + '&resources=volume&field_list=id,name,image,site_detail_url,start_year,description'
+        path: '/api/search/?api_key=' + apiKey + '&limit=25&resources=volume&field_list=id,name,image,site_detail_url,start_year,description'
     };
     options.path += '&query=' + query;
     var deferred = q.defer();
+    console.log(options.host+options.path);
     HTTP.request(options).then(function(response) {
+        console.log(response.status);
         response.body.read().then(function(buffer) {
             parser.parseString(buffer.toString(), function (err, result) {
+                console.log('result count', result.response.results.volume.length);
                 deferred.resolve(result);
             });
         });
