@@ -1,19 +1,33 @@
-.comic {
-    margin: 10px;
-    height: 225px;
-    img {
-        float: left;
-        width: 150px;
-        height: 225px;
+@import "./../theme/variables.less";
+
+@comic-image-height: 225px;
+@comic-image-width: 150px;
+.comic-container {
+    padding: 1px;
+    margin-bottom: 5px;
+    border: 2px solid @gray-dark;
+
+    &:hover {
+        border: 2px solid @brand-primary;
     }
 
-    .comicDetails {
-        margin-left: 160px;
-        overflow-y: hidden;
-        height: 225px;
-    }
+    .comic {
+        position: relative;
+        height: @comic-image-height;
+        img {
+            float: left;
+            width: @comic-image-width;
+            height: @comic-image-height;
+        }
 
-    .btn-group {
-        margin: 10px;
+        .comicDetails {
+            margin-left: @comic-image-width + 10px;
+            overflow-y: hidden;
+            height: @comic-image-height;
+
+            .description {
+                overflow-y: auto;
+            }
+        }
     }
 }

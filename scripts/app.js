@@ -1,8 +1,9 @@
 /** @jsx React.DOM **/
 'use strict';
 
-require('./theme/loadTheme');
-require('./main.less');
+require('./theme/flexbox.less');
+require('./theme/variables.less');
+require('./theme/main.less');
 var React = require('react');
 var NavBar = require('./navBar');
 var {RouteHandler} = require('react-router');

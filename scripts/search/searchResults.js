@@ -10,7 +10,7 @@ var SearchResults = React.createClass({
             );
         });
         return (
-            <div>{comics}</div>
+            <div className="form-group">{comics}</div>
         );
     }
 });
