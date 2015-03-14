@@ -10,7 +10,7 @@ var {Route, DefaultRoute} = Router;
 var routes = (
     <Route name="home" path="/" handler={App}>
         <DefaultRoute handler={HomeView}/>
-        <Route name="search" handler={SearchView}/>
+        <Route name="search" path="search/?:term?" handler={SearchView} />
         <Route name="match" handler={MatchView}/>
     </Route>
 );

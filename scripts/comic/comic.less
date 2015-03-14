@@ -8,7 +8,17 @@
     border: 2px solid @gray-dark;
 
     &:hover {
-        border: 2px solid @brand-primary;
+        border-color: @brand-primary;
+        .comic .check-box {
+            background-color: @brand-primary;
+        }
+    }
+
+    &.active {
+        border-color: @component-active-bg;
+        .comic .check-box {
+            background-color: @component-active-bg;
+        }
     }
 
     .comic {
@@ -21,12 +31,21 @@
         }
 
         .comicDetails {
-            margin-left: @comic-image-width + 10px;
+            margin-left: 10px;
             overflow-y: hidden;
             height: @comic-image-height;
 
             .description {
                 overflow-y: auto;
+            }
+        }
+
+        .check-box {
+            margin-left: 5px;
+            padding: 0 10px;
+            background-color: @gray;
+            &:active {
+                background-color: @component-active-bg;
             }
         }
     }
