@@ -10,7 +10,7 @@ function searchVolumes(query) {
         host: 'www.comicvine.com',
         path: '/api/search/?api_key=' + apiKey + '&limit=25&resources=volume&field_list=id,name,image,site_detail_url,start_year,description'
     };
-    options.path += '&query=' + query;
+    options.path += '&query=' + encodeURIComponent(query);
     var deferred = q.defer();
     console.log(options.host+options.path);
     HTTP.request(options).then(function(response) {
