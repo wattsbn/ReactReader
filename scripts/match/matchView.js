@@ -18,17 +18,20 @@ var MatchView = React.createClass({
             }.bind(this)
         });
     },
+    select: function(data) {
+        console.log('Matching', data.location);
+    },
     getUnMatched: function() {
         return this.state.results.map(function(info) {
             return (
-                <DirectoryInfo key={info.location} data={info} />
+                <DirectoryInfo key={info.location} data={info} select={this.select}/>
             );
-        });
+        }.bind(this));
     },
     render: function() {
         return (
-            <div className="container">
-            {this.getUnMatched()}
+            <div className="container-fluid">
+                {this.getUnMatched()}
             </div>
         );
     }

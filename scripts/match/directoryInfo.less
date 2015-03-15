@@ -1,29 +1,31 @@
 @import "./../theme/variables.less";
 
 .directory-info {
-    padding: 1px;
-    margin-bottom: @padding-small-vertical;
-    border: 2px solid @gray-dark;
+    padding: 5px;
 
-    &:hover {
-        border-color: @brand-primary;
+    .content {
+        padding: 1px;
+        border: 2px solid @gray-dark;
+
+        &:hover {
+            border-color: @brand-primary;
+            .action-box {
+                background-color: @brand-primary;
+            }
+        }
+
+        .main-content {
+            margin-left: 10px;
+        }
+
         .action-box {
-            background-color: @brand-primary;
+            cursor: pointer;
+            margin-left: 5px;
+            padding: 0 10px;
+            background-color: @gray;
+            &:active {
+                background-color: @component-active-bg;
+            }
         }
     }
-
-    .main-content {
-        margin-left: @padding-small-horizontal;
-    }
-
-    .action-box {
-        cursor: pointer;
-        margin-left: @padding-small-horizontal;
-        padding: 0 @padding-small-horizontal;
-        background-color: @gray;
-        &:active {
-            background-color: @component-active-bg;
-        }
-    }
-
 }
