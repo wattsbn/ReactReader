@@ -6,7 +6,7 @@ var SearchResults = React.createClass({
     render: function() {
         var comics = this.props.results.map(function (comic) {
             return (
-                <Comic data={comic}></Comic>
+                <Comic key={comic.id} data={comic}></Comic>
             );
         });
         return (

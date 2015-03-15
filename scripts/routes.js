@@ -3,7 +3,7 @@ var Router = require('react-router');
 var App = require('./app');
 var HomeView = require('./home');
 var SearchView = require('./search/searchView');
-var MatchView = require('./matchView');
+var MatchView = require('./match/matchView');
 
 var {Route, DefaultRoute} = Router;
 
