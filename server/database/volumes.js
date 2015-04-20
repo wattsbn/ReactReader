@@ -1,4 +1,4 @@
-
+'use strict';
 function Volume(name, description, comicVine) {
     Object.defineProperties(this, {
         description: {value: description, enumerable: true},
@@ -11,9 +11,9 @@ Object.defineProperties(Volume.prototype, {
 
 });
 
-function wrapData(data) {
-    return new Volume(data.name, data.description, data.comicVine);
-}
+//function wrapData(data) {
+//    return new Volume(data.name, data.description, data.comicVine);
+//}
 
 function addRow(db, volume) {
     var sql = 'INSERT INTO volumes (name, description, comicVine)';
@@ -34,7 +34,7 @@ function createTable(db) {
 }
 
 function printAll(db) {
-    db.each("SELECT * FROM volumes", function(err, row) {
+    db.each('SELECT * FROM volumes', function(err, row) {
         if (err) {
             console.log(err);
         }

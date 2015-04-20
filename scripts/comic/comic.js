@@ -1,5 +1,6 @@
 /** @jsx React.DOM **/
 'use strict';
+var $ = require('jquery');
 var React = require('react');
 require('./comic.less');
 
@@ -16,7 +17,7 @@ var Comic = React.createClass({
         //d = d > 0 ? d = d.substring(0, index + 4) : d;
         d = d.replace(new RegExp('href="', 'g'), 'target=="_blank" href="http://www.comicvine.com');
         // Fix any malformed html that we got from ComicVine
-        return {__html: $('<div/>').append(d).html()}
+        return {__html: $('<div/>').append(d).html()};
     },
     render: function() {
         var active = this.state.active ? 'active' : '';

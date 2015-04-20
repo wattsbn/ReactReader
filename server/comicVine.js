@@ -1,6 +1,7 @@
+'use strict';
 var q = require('q');
 var xml2js = require('xml2js');
-var HTTP = require("q-io/http");
+var HTTP = require('q-io/http');
 
 var apiKey = '1679636f33c76a038a1bce8fad09a5babfad8f5f';
 var parser = new xml2js.Parser({explicitArray: false});
