@@ -6,7 +6,7 @@ require('./theme/variables.less');
 require('./theme/main.less');
 var React = require('react');
 var NavBar = require('./navBar');
-var {RouteHandler, State} = require('react-router');
+var {RouteHandler} = require('react-router');
 
 class App extends React.Component {
     getHandlerKey() {
