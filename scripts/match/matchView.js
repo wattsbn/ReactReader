@@ -3,14 +3,12 @@ var $ = require('jquery');
 var React = require('react');
 var DirectoryInfo = require('./directoryInfo');
 
-
-var MatchView = React.createClass({
-    getInitialState: function() {
-        return {
-            results: []
-        };
-    },
-    componentDidMount: function() {
+class MatchView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {results: []};
+    }
+    componentDidMount() {
         $.ajax({
             url: 'http://localhost:1337/files/unmatched',
             dataType: 'json',
@@ -18,24 +16,24 @@ var MatchView = React.createClass({
                 this.setState({results: data});
             }.bind(this)
         });
-    },
-    select: function(data) {
+    }
+    selectMatch(data) {
         console.log('Matching', data.location);
-    },
-    getUnMatched: function() {
+    }
+    getUnMatched() {
         return this.state.results.map(function(info) {
             return (
-                <DirectoryInfo key={info.location} data={info} select={this.select}/>
+                <DirectoryInfo key={info.location} data={info} select={this.selectMatch}/>
             );
         }.bind(this));
-    },
-    render: function() {
+    }
+    render() {
         return (
             <div className="container-fluid">
                 {this.getUnMatched()}
             </div>
         );
     }
-});
+}
 
 module.exports = MatchView;

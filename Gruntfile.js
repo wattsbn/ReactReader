@@ -53,6 +53,10 @@ module.exports = function(grunt) {
     grunt.registerTask('start', 'Start webpack dev server on fast mode', ['webpack-connect:true:true:false']);
     grunt.registerTask('start-manual', 'Start webpack dev server on fast mode without auto refresh turned on', ['webpack-connect:true:false:false']);
 
+    grunt.registerTask('start-server', 'Start the api server', function() {
+        require('./server/main').start(this.async());
+    });
+
     grunt.registerTask('lint', ['jshint']);
     grunt.registerTask('default', ['lint', 'build']);
 };

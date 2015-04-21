@@ -4,22 +4,23 @@ var $ = require('jquery');
 var React = require('react');
 require('./comic.less');
 
-var Comic = React.createClass({
-    getInitialState: function() {
-        return {active: false};
-    },
-    onSelect: function() {
+class Comic extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {active: false};
+    }
+    onSelect() {
         this.setState({active: !this.state.active});
-    },
-    getDescription: function() {
+    }
+    getDescription() {
         var d = this.props.data.description;
         //var index = d.indexOf('</p>');
         //d = d > 0 ? d = d.substring(0, index + 4) : d;
         d = d.replace(new RegExp('href="', 'g'), 'target=="_blank" href="http://www.comicvine.com');
         // Fix any malformed html that we got from ComicVine
         return {__html: $('<div/>').append(d).html()};
-    },
-    render: function() {
+    }
+    render() {
         var active = this.state.active ? 'active' : '';
         return (
             <div className={'comic-container ' + active}>
@@ -36,7 +37,7 @@ var Comic = React.createClass({
                                 <div dangerouslySetInnerHTML={this.getDescription()}/>
                             </div>
                         </div>
-                        <div className="check-box flex-none flex-column no-select" onClick={this.onSelect}>
+                        <div className="check-box flex-none flex-column no-select" onClick={this.onSelect.bind(this)}>
                             <span className="flex-all" />
                             <span className="flex-none glyphicon glyphicon-ok" aria-hidden="true"></span>
                             <span className="flex-all" />
@@ -46,6 +47,6 @@ var Comic = React.createClass({
             </div>
         );
     }
-});
+}
 
 module.exports = Comic;

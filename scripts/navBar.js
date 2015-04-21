@@ -1,15 +1,14 @@
 'use strict';
 var React = require('react');
-var config = require('./config');
 var {Link} = require('react-router');
 
-var NavBar = React.createClass({
-    render: function() {
+class NavBar extends React.Component {
+    render() {
         return (
             <div className="navbar navbar-default navbar-fixed-top">
                 <div className="container">
                     <div className="navbar-header">
-                        <Link className="navbar-brand" to="home">{config.appName}</Link>
+                        <Link className="navbar-brand" to="home">ReactReader</Link>
                         <button className="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false">
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
@@ -26,6 +25,6 @@ var NavBar = React.createClass({
             </div>
         );
     }
-});
+}
 
 module.exports = NavBar;

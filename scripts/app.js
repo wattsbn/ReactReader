@@ -8,14 +8,13 @@ var React = require('react');
 var NavBar = require('./navBar');
 var {RouteHandler, State} = require('react-router');
 
-var App = React.createClass({
-    mixins: [State],
-    getHandlerKey: function () {
+class App extends React.Component {
+    getHandlerKey() {
         var childDepth = 1; // assuming App is top-level route
-        var key = this.getRoutes()[childDepth].name;
-        key += this.getParams().term || '';
+        var key = this.context.router.getCurrentRoutes()[childDepth].name;
+        key += this.context.router.getCurrentParams().term || '';
         return key;
-    },
+    }
     render() {
         return (
             <div>
@@ -24,6 +23,10 @@ var App = React.createClass({
             </div>
         );
     }
-});
+}
+
+App.contextTypes = {
+    router: React.PropTypes.func
+};
 
 module.exports = App;

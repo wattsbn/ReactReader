@@ -2,8 +2,8 @@
 var React = require('react');
 var Comic = require('./../comic/comic');
 
-var SearchResults = React.createClass({
-    render: function() {
+class SearchResults extends React.Component {
+    render() {
         var comics = this.props.results.map(function (comic) {
             return (
                 <Comic key={comic.id} data={comic}></Comic>
@@ -13,6 +13,6 @@ var SearchResults = React.createClass({
             <div className="form-group">{comics}</div>
         );
     }
-});
+}
 
 module.exports = SearchResults;

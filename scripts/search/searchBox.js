@@ -1,28 +1,28 @@
 'use strict';
 var React = require('react');
 
-var SearchBox = React.createClass({
-    componentDidMount: function() {
+class SearchBox extends React.Component {
+    componentDidMount() {
         this.refs.text.getDOMNode().value = this.props.value||'';
-    },
-    handleClick: function() {
+    }
+    handleClick() {
         this.props.search(this.refs.text.getDOMNode().value.trim());
-    },
-    handleKeyDown: function(event) {
+    }
+    handleKeyDown(event) {
         if (event.keyCode !== 13) { return; } // Enter
         return this.handleClick();
-    },
-    render: function() {
+    }
+    render() {
         return (
             <div className="form-group input-group">
-                <input autoFocus ref="text" className="form-control" type="text" onKeyDown={this.handleKeyDown}
+                <input autoFocus ref="text" className="form-control" type="text" onKeyDown={this.handleKeyDown.bind(this)}
                     placeholder="Enter comic name..." />
                 <span className="input-group-btn">
-                    <div className="btn btn-primary" onClick={this.handleClick}>Search</div>
+                    <div className="btn btn-primary" onClick={this.handleClick.bind(this)}>Search</div>
                 </span>
             </div>
         );
     }
-});
+}
 
 module.exports = SearchBox;
