@@ -22,7 +22,7 @@ function createData(data, basePath, createFn) {
     mkdirp.sync(basePath);
     _.each(data, function(value, key) {
         if (value) {
-            createData(value, path.resolve(basePath, key));
+            createData(value, path.resolve(basePath, key), createFn);
         } else {
             var directory = path.resolve(basePath, key);
             mkdirp.sync(directory);
@@ -32,7 +32,7 @@ function createData(data, basePath, createFn) {
 }
 
 function createComics() {
-    createData(comicData, path.resolve(__dirname, '..', '..', 'data'));
+    createData(comicData, path.resolve(__dirname, '..', '..', 'data'), createVolume);
 }
 
 module.exports = {
