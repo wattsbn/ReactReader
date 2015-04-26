@@ -32,7 +32,8 @@ function createData(data, basePath, createFn) {
 }
 
 function createComics() {
-    createData(comicData, path.resolve(__dirname, '..', '..', 'data'), createVolume);
+    var basePath = path.resolve(__dirname, '..', '..', 'data');
+    createData(comicData, basePath, createVolume);
 }
 
 module.exports = {

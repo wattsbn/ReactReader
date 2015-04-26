@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express');
 var comicVine = require('./comicVine');
+var matches = require('./matches');
 
 var app = express();
 app.use(function(req, res, next) {
@@ -23,19 +24,7 @@ app.get('/search/:term', function (req, res) {
     });
 });
 
-app.get('/files/unmatched', function(req, res) {
-    res.append('Content-Type', 'application/json');
-    var testData = [
-        {name: 'batman', location: '/comics/new 52/batman'},
-        {name: 'superman', location: '/comics/new 52/superman'},
-        {name: 'wonderwoman', location: '/comics/new 52/wonderwoman'},
-        {name: 'superboy', location: '/comics/new 52/superboy'},
-        {name: 'deadshot', location: '/comics/new 52/deadshot'},
-        {name: 'flash', location: '/comics/new 52/flash'},
-        {name: 'grifter', location: '/comics/new 52/grifter'}
-    ];
-    res.send(testData);
-});
+matches.initialize(app);
 
 function startServer() {
     var server = app.listen(1337, function () {
