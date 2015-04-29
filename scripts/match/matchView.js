@@ -19,11 +19,12 @@ class MatchView extends React.Component {
     }
     selectMatch(data) {
         console.log('Matching', data.location);
+        this.context.router.transitionTo('/matching/' + data.name);
     }
     getUnMatched() {
         return this.state.results.map(function(info) {
             return (
-                <DirectoryInfo key={info.location} data={info} select={this.selectMatch}/>
+                <DirectoryInfo key={info.location} data={info} select={this.selectMatch.bind(this)}/>
             );
         }.bind(this));
     }
@@ -35,5 +36,9 @@ class MatchView extends React.Component {
         );
     }
 }
+
+MatchView.contextTypes = {
+    router: React.PropTypes.func
+};
 
 module.exports = MatchView;

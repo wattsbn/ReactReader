@@ -1,10 +1,10 @@
 'use strict';
 var $ = require('jquery');
 var React = require('react');
-var SearchBox = require('./searchBox');
-var SearchResults = require('./searchResults');
+var SearchBox = require('../search/searchBox');
+var SearchResults = require('../search/searchResults');
 
-class SearchView extends React.Component {
+class MatchingView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {results: []};
@@ -32,8 +32,8 @@ class SearchView extends React.Component {
     }
 }
 
-SearchView.contextTypes = {
+MatchingView.contextTypes = {
     router: React.PropTypes.func
 };
 
-module.exports = SearchView;
+module.exports = MatchingView;
