@@ -1,5 +1,3 @@
-/** @jsx React.DOM **/
-'use strict';
 require('./directoryInfo.less');
 var React = require('react');
 

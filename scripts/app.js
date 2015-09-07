@@ -1,6 +1,3 @@
-/** @jsx React.DOM **/
-'use strict';
-
 require('./theme/flexbox.less');
 require('./theme/variables.less');
 require('./theme/main.less');

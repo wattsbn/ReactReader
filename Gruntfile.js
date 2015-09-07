@@ -13,23 +13,6 @@ function loadConnect(grunt, config) {
     };
 }
 
-function loadLint(grunt, config) {
-    grunt.loadNpmTasks('grunt-jsxhint');
-    config.jshint = {
-        options: {
-            additionalSuffixes: ['.js'],
-            esnext: true,
-            jshintrc: '.jshintrc'
-        },
-        files: [
-            '*.js',
-            '**/*.js',
-            '!build/**/*',
-            '!**/node_modules/**/*'
-        ]
-    };
-}
-
 function loadClean(grunt, config) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     config.clean = {
@@ -60,8 +43,14 @@ function loadWebpack(grunt) {
 module.exports = function(grunt) {
     var config = {};
 
+    grunt.loadNpmTasks('grunt-eslint');
+    config.eslint = {
+        target: [
+            './scripts/**/*.js'
+        ]
+    };
+
     loadConnect(grunt, config);
-    loadLint(grunt, config);
     loadClean(grunt, config);
 
     loadHelpers(grunt);
@@ -78,7 +67,7 @@ module.exports = function(grunt) {
         require('./server/main').start(this.async());
     });
 
-    grunt.registerTask('lint', ['jshint']);
+    grunt.registerTask('lint', ['eslint']);
     grunt.registerTask('default', ['lint', 'build']);
 
     grunt.initConfig(config);

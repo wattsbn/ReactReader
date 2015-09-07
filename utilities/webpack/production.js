@@ -30,7 +30,7 @@ var config = {
     },
     module: {
         loaders: [
-            {test: /\.js$/, loaders: ['react-hot', 'jsx?harmony'], exclude: /node_modules/},
+            {test: /\.js$/, loaders: ['babel'], exclude: /node_modules/},
             {test: /\.(png|jpg|gif|woff|eot|ttf|otf|svg|cur)/, loader: 'file-loader?name=assets/[name].[ext]'},
             {test: /\.less$/, loaders: ['style', 'css?-minimize', 'less']}
         ]

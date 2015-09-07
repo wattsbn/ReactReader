@@ -1,4 +1,3 @@
-'use strict';
 var React = require('react');
 
 class HomeView extends React.Component {

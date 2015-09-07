@@ -1,4 +1,3 @@
-'use strict';
 var React = require('react');
 
 class SearchBox extends React.Component {

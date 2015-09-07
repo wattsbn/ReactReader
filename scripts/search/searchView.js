@@ -1,4 +1,3 @@
-'use strict';
 var $ = require('jquery');
 var React = require('react');
 var SearchBox = require('./searchBox');

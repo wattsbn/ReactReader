@@ -1,4 +1,3 @@
-'use strict';
 module.exports = [
     {name: 'Cerulean', url: '//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/cerulean/bootstrap.min.css'},
     {name: 'Cosmo', url: '//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/cosmo/bootstrap.min.css'},
