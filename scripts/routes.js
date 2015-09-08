@@ -1,3 +1,8 @@
+import 'babel-core/polyfill';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import store from './state/store';
+
 var React = require('react');
 var Router = require('react-router');
 var App = require('./app');
@@ -18,5 +23,12 @@ var routes = (
 );
 
 Router.run(routes, function (Handler) {
-    React.render(<Handler/>, document.body);
+    React.render(
+        <Provider store={store}>
+            {() =>
+                <Handler/>
+            }
+        </Provider>,
+        document.body
+    );
 });
