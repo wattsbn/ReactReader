@@ -25,9 +25,7 @@ var routes = (
 Router.run(routes, function (Handler) {
     React.render(
         <Provider store={store}>
-            {() =>
-                <Handler/>
-            }
+            {() => <Handler/> }
         </Provider>,
         document.body
     );
