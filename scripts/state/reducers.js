@@ -13,7 +13,8 @@ function comicReducer(state = initialState, action = {}) {
         case COMICS_SEARCH:
             return state.merge({
                 isSearching: true,
-                searchTerm: action.searchTerm
+                searchTerm: action.searchTerm,
+                searchResults: null
             });
         case COMICS_SEARCH_SUCCESS:
             if (action.searchTerm !== state.get('searchTerm')) {

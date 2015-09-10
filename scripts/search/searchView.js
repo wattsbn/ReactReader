@@ -1,31 +1,35 @@
 import { connect } from 'react-redux';
 import { searchComics } from '../state/actions';
+import React, { findDOMNode, PropTypes } from 'react'
 
 var $ = require('jquery');
-var React = require('react');
 var SearchBox = require('./searchBox');
 var SearchResults = require('./searchResults');
 
 class SearchView extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {results: []};
-    }
-    componentDidMount() {
+    static propTypes = {
+        params: PropTypes.shape({
+            tem: PropTypes.string
+        })
+    };
+
+    static contextTypes = {
+        history: PropTypes.object.isRequired
+    };
+
+    componentWillMount() {
+        if (!this.props.params.term) { return; }
         const { dispatch } = this.props;
-        dispatch(searchComics(this.context.router.getCurrentParams().term));
-        //
-        //var term = this.context.router.getCurrentParams().term;
-        //if (!term) { return; }
-        //$.ajax({
-        //    url: 'http://localhost:1337/search/' + this.context.router.getCurrentParams().term,
-        //    dataType: 'json',
-        //    success: data => this.setState({results: data.response.results.volume})
-        //});
+        dispatch(searchComics(this.props.params.term));
+    }
+    componentDidUpdate (prevProps) {
+        if (this.props.params.term === prevProps.params.term) { return; }
+        const { dispatch } = this.props;
+        dispatch(searchComics(this.props.params.term));
     }
     handleSearch(searchTerm) {
         if (!searchTerm) { return; }
-        this.context.router.transitionTo('/search/'+searchTerm);
+        this.context.history.pushState({}, `/search/${searchTerm}`);
     }
     render() {
         const { isSearching, searchTerm, searchResults } = this.props;
@@ -38,10 +42,6 @@ class SearchView extends React.Component {
         );
     }
 }
-
-SearchView.contextTypes = {
-    router: React.PropTypes.func
-};
 
 function selectResults(results) {
     return results ? results.toJS() : [];

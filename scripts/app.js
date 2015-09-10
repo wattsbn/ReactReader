@@ -6,17 +6,11 @@ var NavBar = require('./navBar');
 var {RouteHandler} = require('react-router');
 
 class App extends React.Component {
-    getHandlerKey() {
-        var childDepth = 1; // assuming App is top-level route
-        var key = this.context.router.getCurrentRoutes()[childDepth].name;
-        key += this.context.router.getCurrentParams().term || '';
-        return key;
-    }
     render() {
         return (
             <div>
                 <NavBar />
-                <RouteHandler key={this.getHandlerKey()} />
+                <div>{this.props.children}</div>
             </div>
         );
     }

@@ -2,31 +2,34 @@ import 'babel-core/polyfill';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import store from './state/store';
+import { Redirect, Router, Route } from 'react-router'
+import createBrowserHistory from 'history/lib/createBrowserHistory'
 
 var React = require('react');
-var Router = require('react-router');
 var App = require('./app');
 var HomeView = require('./home');
 var SearchView = require('./search/searchView');
 var MatchView = require('./match/matchView');
 var MatchingView = require('./matching/matchingView');
 
-var {Route, DefaultRoute} = Router;
 
-var routes = (
-    <Route name="home" path="/" handler={App}>
-        <DefaultRoute handler={HomeView}/>
-        <Route name="search" path="search/?:term?" handler={SearchView} />
-        <Route name="unmatched" handler={MatchView}/>
-        <Route name="matching" path="matching/:term" handler={MatchingView}/>
-    </Route>
-);
-
-Router.run(routes, function (Handler) {
-    React.render(
-        <Provider store={store}>
-            {() => <Handler/> }
-        </Provider>,
-        document.body
+function getRoutes() {
+    return (
+        <Router history={createBrowserHistory()}>
+            <Route component={App}>
+                <Route path="/" component={HomeView} />
+                <Route path="/search" component={SearchView} />
+                <Route path="/search/:term" component={SearchView} />
+                <Route path="/matching/:term" component={MatchingView} />
+            </Route>
+        </Router>
     );
-});
+}
+
+
+React.render(
+    <Provider store={store}>
+        {getRoutes.bind(null)}
+    </Provider>,
+    document.body
+);
