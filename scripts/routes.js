@@ -1,17 +1,14 @@
 import 'babel-core/polyfill';
+import App from './app';
+import React from 'react';
+import store from './state/store';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import store from './state/store';
+import HomeView from './views/HomeView';
+import SearchView from './views/SearchView';
+import MatchingView from './views/MatchingView';
 import { Redirect, Router, Route } from 'react-router'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
-
-var React = require('react');
-var App = require('./app');
-var HomeView = require('./home');
-var SearchView = require('./search/searchView');
-var MatchView = require('./match/matchView');
-var MatchingView = require('./matching/matchingView');
-
 
 function getRoutes() {
     return (
@@ -25,7 +22,6 @@ function getRoutes() {
         </Router>
     );
 }
-
 
 React.render(
     <Provider store={store}>

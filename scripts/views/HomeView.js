@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 class HomeView extends React.Component {
     render() {
@@ -10,4 +10,4 @@ class HomeView extends React.Component {
     }
 }
 
-module.exports = HomeView;
+export default HomeView;

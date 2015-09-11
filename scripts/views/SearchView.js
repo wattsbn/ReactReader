@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
+import SearchBox from '../search/searchBox';
 import { searchComics } from '../state/actions';
-import React, { findDOMNode, PropTypes } from 'react'
-
-var $ = require('jquery');
-var SearchBox = require('./searchBox');
-var SearchResults = require('./searchResults');
+import SearchResults from '../search/searchResults';
+import React, { findDOMNode, PropTypes } from 'react';
 
 class SearchView extends React.Component {
     static propTypes = {
@@ -36,7 +34,6 @@ class SearchView extends React.Component {
         return (
             <div className="container">
                 <SearchBox value={searchTerm} search={this.handleSearch.bind(this)} />
-                <div> {isSearching ? 'true' : 'false'} </div>
                 <SearchResults results={searchResults} />
             </div>
         );
@@ -57,4 +54,4 @@ function select(state) {
     };
 }
 
-module.exports = connect(select)(SearchView);
+export default connect(select)(SearchView);
