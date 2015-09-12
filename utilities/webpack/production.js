@@ -6,7 +6,7 @@ var uglify = require('./uglify');
 var config = {
     devtool: 'source-map',
     entry: {
-        'main': ['./scripts/routes']
+        'main': ['./scripts/index']
     },
     recordsPath: path.resolve(__dirname, '..', '..', 'build', 'records.json'),
     output: {

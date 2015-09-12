@@ -1,18 +1,13 @@
-import 'babel-core/polyfill';
 import App from './app';
 import React from 'react';
-import store from './state/store';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 import HomeView from './views/HomeView';
 import SearchView from './views/SearchView';
+import { Router, Route } from 'react-router';
 import MatchingView from './views/MatchingView';
-import { Redirect, Router, Route } from 'react-router'
-import createBrowserHistory from 'history/lib/createBrowserHistory'
 
-function getRoutes() {
+function getRoutes(history) {
     return (
-        <Router history={createBrowserHistory()}>
+        <Router history={history}>
             <Route component={App}>
                 <Route path="/" component={HomeView} />
                 <Route path="/search" component={SearchView} />
@@ -23,9 +18,4 @@ function getRoutes() {
     );
 }
 
-React.render(
-    <Provider store={store}>
-        {getRoutes.bind(null)}
-    </Provider>,
-    document.body
-);
+export default getRoutes;

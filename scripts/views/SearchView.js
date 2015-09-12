@@ -3,6 +3,7 @@ import SearchBox from '../search/searchBox';
 import { searchComics } from '../state/actions';
 import SearchResults from '../search/searchResults';
 import React, { findDOMNode, PropTypes } from 'react';
+import SpinnerBanner from '../components/spinner/SpinnerBanner';
 
 class SearchView extends React.Component {
     static propTypes = {
@@ -31,10 +32,13 @@ class SearchView extends React.Component {
     }
     render() {
         const { isSearching, searchTerm, searchResults } = this.props;
+        var bottom = isSearching ?
+            ( <SpinnerBanner text={"Searching..."} /> ):
+            ( <SearchResults results={searchResults} /> );
         return (
             <div className="container">
                 <SearchBox value={searchTerm} search={this.handleSearch.bind(this)} />
-                <SearchResults results={searchResults} />
+                { bottom }
             </div>
         );
     }

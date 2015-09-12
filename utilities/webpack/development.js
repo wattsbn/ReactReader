@@ -5,7 +5,7 @@ var uglify = require('./uglify');
 
 var config = {
     entry: {
-        'main': ['./scripts/routes']
+        'main': ['./scripts/index']
     },
     recordsPath: path.resolve(__dirname, '..', '..', 'build', 'records.json'),
     output: {
