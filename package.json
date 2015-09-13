@@ -23,6 +23,7 @@
     "redux": "^2.0.0",
     "redux-logger": "^1.0.6",
     "redux-thunk": "^0.1.0",
+    "reselect": "^1.0.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

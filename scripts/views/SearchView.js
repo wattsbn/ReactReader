@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import SearchBox from '../search/searchBox';
 import { searchComics } from '../state/actions';
 import SearchResults from '../search/searchResults';
@@ -44,17 +45,16 @@ class SearchView extends React.Component {
     }
 }
 
-function selectResults(results) {
-    return results ? results.toJS() : [];
-}
+const selectResults = createSelector(
+    state => state.get('searchResults'),
+    results => results ? results.toJS() : []
+);
 
-// Which props do we want to inject, given the global state?
-// Note: use https://github.com/faassen/reselect for better performance.
 function select(state) {
     return {
         isSearching: state.get('isSearching'),
         searchTerm: state.get('searchTerm'),
-        searchResults: selectResults(state.get('searchResults'))
+        searchResults: selectResults(state)
     };
 }
 
