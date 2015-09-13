@@ -10,7 +10,7 @@ class SearchView extends React.Component {
     static propTypes = {
         params: PropTypes.shape({
             tem: PropTypes.string
-        })
+        }).isRequired
     };
 
     static contextTypes = {

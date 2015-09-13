@@ -8,9 +8,8 @@ function getRoutes(history) {
     return (
         <Router history={history}>
             <Route component={App}>
-                <Route path="/" component={HomeView} />
-                <Route path="/search" component={SearchView} />
-                <Route path="/search/:term" component={SearchView} />
+                <Route path="/search(/:term)" component={SearchView} />
+                <Route path="*" component={HomeView} />
             </Route>
         </Router>
     );
