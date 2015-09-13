@@ -14,7 +14,7 @@ React.render(
             { getRoutes.bind(null, history) }
         </Provider>
         <DebugPanel top right bottom>
-            <DevTools store={store} monitor={LogMonitor} />
+            <DevTools store={store} monitor={LogMonitor} visibleOnLoad={false}/>
         </DebugPanel>
     </div>,
     document.body

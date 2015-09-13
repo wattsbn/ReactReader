@@ -17,7 +17,6 @@ class NavBar extends React.Component {
                     <div className="navbar-collapse collapse" id="navbar-main">
                         <ul className="nav navbar-nav">
                             <li><Link to="/search">Search</Link></li>
-                            <li><Link to="/unmatched">Match</Link></li>
                         </ul>
                     </div>
                 </div>
