@@ -1,4 +1,4 @@
 # ReactReader
-Online comic book reader using React.js
+old react playground project
 
 Theme: https://bootswatch.com/darkly/
